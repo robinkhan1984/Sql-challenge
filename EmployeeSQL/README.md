@@ -1,3 +1,69 @@
+
+CREATE TABLE "Departments" (
+    "dept_no" VARCHAR(5)   NOT NULL,
+    "dept_name" VARCHAR(20)   NOT NULL,
+    CONSTRAINT "pk_Departments" PRIMARY KEY (
+        "dept_no"
+     )
+);
+
+Select * FROM "Departments";
+
+CREATE TABLE "titles" (
+    "title_id" VARCHAR(5)   NOT NULL,
+    "title" VARCHAR(20)   NOT NULL
+);
+
+Select * FROM "titles";
+
+CREATE TABLE "employees" (
+    "emp_no" INT   NOT NULL,
+    "emp_title_id" VARCHAR(5)   NOT NULL,
+    "birth_date" DATE   NOT NULL,
+    "first_name" VARCHAR(30)   NOT NULL,
+    "last_name" VARCHAR(30)   NOT NULL,
+    "sex" VARCHAR(1)   NOT NULL,
+    "hire_date" DATE   NOT NULL,
+    CONSTRAINT "pk_employees" PRIMARY KEY (
+        "emp_no"
+     )
+);
+
+SELECT * FROM "employees";
+
+CREATE TABLE "salaries" (
+    "emp_no" INT   NOT NULL,
+    "salary" INT   NOT NULL
+);
+
+SELECT * FROM "salaries";
+
+CREATE TABLE "dept_emp" (
+    "emp_no" INT   NOT NULL,
+    "dept_no" VARCHAR(4)   NOT NULL
+);
+
+SELECT * FROM "dept_emp";
+
+CREATE TABLE "dept_manager" (
+    "dept_no" VARCHAR(4)   NOT NULL,
+    "emp_no" INT   NOT NULL
+);
+
+SELECT * FROM "dept_manager";
+
+SELECT employees.emp_no,employees.first_name,employees.last_name,employees.sex, salaries.salary
+FROM employees
+INNER JOIN salaries ON 
+employees.emp_no=salaries.emp_no;
+
+SELECT first_name,last_name,hire_date
+FROM employees
+WHERE DATE_PART('year',hire_date) = 1986;
+
+
+
+
 # SQL Homework - Employee Database: A Mystery in Two Parts
 
 ![sql.png](sql.png)
