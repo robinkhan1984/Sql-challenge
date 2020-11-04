@@ -17,8 +17,11 @@ CREATE TABLE "Departments" (
 );
 
 CREATE TABLE "titles" (
-    "title_id" VARCHAR(5)   NOT NULL,
-    "title" VARCHAR(20)   NOT NULL
+    "title_id" VARCHAR(255)   NOT NULL,
+    "title" VARCHAR(255)   NOT NULL
+	CONSTRAINT "pk_Titles" PRIMARY KEY (
+        "title_id"
+     )
 );
 
 CREATE TABLE "employees" (
@@ -122,7 +125,9 @@ WHERE dept_name = 'Sales' AND dept_name = 'Development'
 -- 8. In descending order, list the frequency count of employee last names,
 -- i.e., how many employees share each last name.
 
-
+SELECT last_name,
+COUNT (last_name) AS "surname"
+FROM employees
 
 
 
